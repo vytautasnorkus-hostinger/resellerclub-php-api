@@ -260,9 +260,7 @@ class Domains
         $protectPrivacy = false,
         $additional = []
     ) {
-        return $this->post(
-            'transfer',
-            [
+        $params = [
                 'domain-name'        => $domain,
                 'auth-code'          => $code,
                 'ns'                 => $ns,
@@ -274,8 +272,11 @@ class Domains
                 'invoice-option'     => $invoice,
                 'purchase-privacy'   => $purchasePrivacy,
                 'protect-privacy'    => $protectPrivacy,
-            ] + $this->processAttributes($additional)
-        );
+            ] + $this->processAttributes($additional);
+
+        $params = http_build_query($params);
+
+        return $this->postArgString('transfer', $params);
     }
 
     /**
