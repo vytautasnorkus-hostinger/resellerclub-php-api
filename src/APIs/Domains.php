@@ -1129,4 +1129,23 @@ class Domains
             'reseller-lock/'
         );
     }
+
+    /**
+     * @param int $orderId
+     * @param string $reason
+     *
+     * @return array|Exception
+     * @throws Exception
+     */
+    public function cancelIRTP($orderId, $reason)
+    {
+        return $this->get(
+            'cancel',
+            [
+                'order-id' => $orderId,
+                'reason'   => $reason,
+            ],
+            'irtp/verification/'
+        );
+    }
 }
