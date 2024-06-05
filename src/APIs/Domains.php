@@ -1139,7 +1139,7 @@ class Domains
      */
     public function cancelIRTP($orderId, $reason)
     {
-        return $this->get(
+        return $this->post(
             'cancel',
             [
                 'order-id' => $orderId,
