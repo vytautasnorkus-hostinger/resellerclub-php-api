@@ -1148,4 +1148,21 @@ class Domains
             'irtp/verification/'
         );
     }
+
+    /**
+     * @param $orderId
+     *
+     * @return array|Exception
+     * @throws Exception
+     */
+    public function transferAwayApprove($orderId)
+    {
+        return $this->post(
+            'approve',
+            [
+                'orderid'       => $orderId,
+            ],
+            'transfer-away-from-us/'
+        );
+    }
 }
